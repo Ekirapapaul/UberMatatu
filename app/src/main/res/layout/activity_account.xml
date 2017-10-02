@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:id="@+id/ivLogo"
+            android:src="@mipmap/ic_launcher"
+            android:scaleType="fitCenter"
+            android:layout_above="@+id/linearLayout" android:layout_centerHorizontal="true"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_alignParentBottom="true" android:id="@+id/linearLayout">
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:id="@+id/btn_sign_in"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/btn_transparent" tools:targetApi="honeycomb"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:id="@+id/btn_sign_up"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:background="@drawable/btn_transparent"
+                android:textStyle="bold" tools:targetApi="honeycomb"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

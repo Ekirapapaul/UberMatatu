@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rtMain"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="false" android:id="@+id/scrollView">
+
+    <LinearLayout
+            android:id="@+id/loginLyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+                android:text="Date"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:visibility="gone"
+                android:ems="10"
+                android:editable="false"
+                android:focusable="false"
+                android:id="@+id/etDate" android:layout_gravity="center_horizontal"/>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:text="You can book a bus up to 4 hours from now!!"
+                  android:textAlignment="center"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="20dp"
+                  android:gravity="center"
+                  android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        />
+
+        <TextView
+                android:text="Time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:editable="false"
+                android:focusable="false"
+                android:id="@+id/etTime" android:layout_gravity="center_horizontal"/>
+
+        <TextView
+                android:text="Pick Up Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:focusable="false"
+                android:id="@+id/etPickLoc" android:layout_gravity="center_horizontal"/>
+
+        <TextView
+                android:text="Drop Off Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:editable="false"
+                android:focusable="false"
+                android:id="@+id/etDropLoc" android:layout_gravity="center_horizontal"/>
+
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit Request"
+                android:background="@drawable/btn_bg"
+                android:textColor="@android:color/white"
+                android:id="@+id/btnRequest" android:layout_gravity="center_horizontal" android:paddingLeft="20dp"
+                android:paddingRight="20dp" android:layout_marginTop="10dp"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/barProgress"
+                android:indeterminate="true"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+    </ScrollView>
+    <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+        android:id="@+id/snackLyt"
+    android:layout_alignParentBottom="true">
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>

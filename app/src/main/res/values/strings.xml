@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Transcomfy</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_delete">Delete</string>
+
+    <string name="api_key">AIzaSyCSKRppHzJUo5YufmXVsuxMsrwDrc8NHSs</string>
+    <string name="api_key0">AIzaSyCkZOwxdpY-bfjtIyRunfLVUU4x-8NWhKY</string>
+    <string name="api_key_matrix">AIzaSyAF6Bkq81P4tr9RR3qYANmIAws3QZwSi1Q</string>
+
+    <string name="title_section1">Request Bus</string>
+    <string name="title_section2">Previous Trips</string>
+    <string name="title_section3">Manager</string>
+    <string name="title_section4">Settings</string>
+
+    <string name="error_empty_fields">Please fill this field</string>
+    <string name="error_pass_no_match">Passwords do not match</string>
+</resources>

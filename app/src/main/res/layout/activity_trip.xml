@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+
+<LinearLayout android:layout_width="fill_parent" android:layout_height="match_parent"
+              android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:drawableLeft="@drawable/calendar"
+                android:drawablePadding="10dp"
+                android:textSize="17sp"
+                android:gravity="center_vertical" android:editable="false" android:elegantTextHeight="false"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="date..."
+                android:textSize="17sp"
+                android:id="@+id/txtDate" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:drawableLeft="@drawable/timer"
+                android:drawablePadding="10dp"
+                android:textSize="17sp"
+                android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time..."
+                android:textSize="17sp"
+                android:id="@+id/txtTime" android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From: "
+                android:drawableLeft="@drawable/west_direction"
+                android:drawablePadding="10dp"
+                android:textSize="17sp"
+                android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="from..."
+                android:textSize="17sp"
+                android:id="@+id/txtFrom" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To: "
+                android:drawableLeft="@drawable/east_direction"
+                android:drawablePadding="10dp"
+                android:textSize="17sp"
+                android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="to..."
+                android:textSize="17sp"
+                android:id="@+id/txtTo" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" android:paddingBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: "
+                android:textSize="17sp"
+                android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="status..."
+                android:textSize="17sp"
+                android:id="@+id/txtStatus" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical"
+    >
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="Your Bus Ticket" android:gravity="center"
+                  android:textAlignment="center"
+        />
+        <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
+                   android:padding="10dp" android:id="@+id/ivQR"
+        />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="0dp" android:layout_weight="1"
+                  android:orientation="vertical"
+                  android:id="@+id/lytGroup"
+                  android:background="@drawable/bg_layout" android:backgroundTint="@color/white"
+                  android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                  android:layout_marginRight="10dp">
+        <ListView android:layout_width="fill_parent" android:layout_height="0dp"
+                  android:id="@+id/lvGroup"
+                  android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" android:layout_marginTop="10dp" android:layout_marginBottom="5dp"/>
+
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:id="@+id/lytVehicle"
+                  android:visibility="gone"
+                 android:background="@drawable/bg_layout" android:backgroundTint="@color/white"
+                 android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                 android:layout_marginRight="10dp">
+       <LinearLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingLeft="25dp"
+               android:paddingTop="10dp" android:paddingBottom="10dp">
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Vehicle: "
+                   android:drawableLeft="@drawable/taxi_30"
+                   android:drawablePadding="10dp"
+                   android:textSize="17sp"
+                   android:gravity="center_vertical"/>
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="KAY 290W"
+                   android:textSize="17sp"
+                   android:id="@+id/txtVehicle" android:gravity="center_vertical"/>
+       </LinearLayout>
+       <LinearLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingLeft="25dp"
+               android:paddingTop="10dp" android:paddingBottom="10dp">
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Driver: "
+                   android:drawableLeft="@drawable/driver_30"
+                   android:drawablePadding="10dp"
+                   android:textSize="17sp"
+                   android:gravity="center_vertical"/>
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Mark Karanja"
+                   android:textSize="17sp"
+                   android:id="@+id/txtDriver" android:gravity="center_vertical"/>
+       </LinearLayout>
+       <LinearLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingLeft="25dp"
+               android:paddingTop="10dp" android:paddingBottom="10dp">
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text=" "
+                   android:drawableLeft="@drawable/phone_30"
+                   android:drawablePadding="10dp"
+                   android:textSize="17sp"
+                   android:gravity="center_vertical"/>
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="0712123344"
+                   android:textSize="17sp"
+                   android:autoLink="phone"
+                   android:id="@+id/txtPhoneNo" android:gravity="center_vertical"/>
+       </LinearLayout>
+   </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:id="@+id/lytTrip"
+                  android:visibility="gone"
+                  android:background="@drawable/bg_layout" android:paddingTop="25dp" android:paddingLeft="25dp"
+                  android:paddingRight="10dp" android:backgroundTint="@color/white" android:layout_marginLeft="10dp"
+                  android:layout_marginTop="5dp" android:layout_marginRight="10dp" android:layout_marginBottom="5dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Mileage: "
+                android:textSize="17sp"
+        />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp">
+            <EditText
+                    android:id="@+id/etStart"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:hint="Enter Start Mileage"
+                    android:drawableLeft="@drawable/play_30"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+            />
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:textSize="12sp"
+                    android:id="@+id/btnRSubmit"
+                    android:background="@drawable/btn_transparent" android:layout_gravity="right"/>
+            <ProgressBar
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pgStart"
+                    android:padding="10dp"
+                    android:indeterminate="true"
+                    android:visibility="gone"/>
+        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stop Mileage: "
+                android:textSize="17sp"
+        />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp">
+            <EditText
+                    android:id="@+id/etStop"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:hint="Enter Stop Mileage"
+                    android:drawableLeft="@drawable/stop_30"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
+            />
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:textSize="12sp"
+                    android:id="@+id/btnTSubmit"
+                    android:background="@drawable/btn_transparent" android:layout_gravity="right"/>
+            <ProgressBar
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pgStop"
+                    android:padding="10dp"
+                    android:indeterminate="true"
+                    android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>
+

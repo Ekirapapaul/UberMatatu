@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:paddingRight="15dp" android:paddingTop="20dp"
+              android:background="@color/white"
+              android:layout_margin="10dp"
+              android:paddingBottom="1dp" android:paddingLeft="15dp">
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:drawableLeft="@drawable/calendar"
+            android:drawablePadding="10dp"
+            android:id="@+id/txtDate" android:textSize="17sp" android:textColor="@color/black"
+            android:gravity="center_vertical" android:paddingBottom="5dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:drawableLeft="@drawable/timer"
+            android:text="at "
+            android:drawablePadding="10dp"
+            android:id="@+id/txtTime" android:textSize="17sp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"/>
+    <View android:layout_width="fill_parent"
+          android:layout_height=".7dp"
+          android:background="@color/divider"
+          android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
+    />
+    />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From: "
+                android:textSize="15sp" android:textColor="@color/black" android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/west_direction"
+                android:text="location..."
+                android:drawablePadding="10dp"
+                android:id="@+id/txtFrom" android:paddingLeft="5dp" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="10dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To: "
+                android:textSize="15sp" android:textColor="@color/black" android:gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="location..."
+                android:drawableLeft="@drawable/east_direction"
+                android:drawablePadding="10dp"
+                android:id="@+id/txtTo" android:paddingLeft="5dp" android:gravity="center_vertical"/>
+    </LinearLayout>
+    <View android:layout_width="fill_parent"
+          android:layout_height=".7dp"
+          android:background="@color/divider"
+          android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
+    />
+    />
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status:  "
+                android:textSize="15sp" android:textColor="@color/black"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="status..."
+                android:id="@+id/txtStatus"/>
+    </LinearLayout>
+    <View android:layout_width="fill_parent"
+          android:layout_height="1.7dp"
+          android:background="@color/colorAccent" android:layout_marginTop="20dp"/>
+    />
+
+</LinearLayout>

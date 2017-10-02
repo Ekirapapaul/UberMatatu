@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="Request Ride"
+          android:id="@+id/nav_item_request"
+          android:icon="@drawable/home"/>
+
+    <item android:title="My Trips"
+          android:id="@+id/nav_item_trips"
+          android:icon="@drawable/connect"/>
+
+
+
+<!--
+    <item android:title="Admin">
+        <menu>
+            <item
+                android:title="Manager"
+            android:id="@+id/nav_item_manager"
+            android:icon="@drawable/settings"/>
+
+        </menu>
+    </item>
+-->
+
+    <group android:id="@+id/group_settings_id">
+        <item
+                android:title="Log Out"
+                android:id="@+id/nav_item_profile"
+                android:icon="@drawable/profile"/>
+
+        <item android:title="Settings"
+              android:icon="@drawable/settings"
+              android:id="@+id/nav_item_settings"/>
+        <item android:title="Help"
+             android:icon="@drawable/help"/>
+    </group>
+
+
+</menu>
