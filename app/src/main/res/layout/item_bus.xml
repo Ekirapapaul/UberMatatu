@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/bg_layout"
+              android:backgroundTint="@color/white"
+              android:layout_margin="0dp"
+              android:paddingRight="15dp" android:paddingTop="20dp"
+              android:paddingBottom="1dp" android:paddingLeft="15dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal" android:weightSum="10">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp" android:paddingBottom="5dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bus: "
+                    android:drawableLeft="@drawable/taxi_30"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KAY 290W"
+                    android:textSize="17sp"
+                    android:id="@+id/txtBusPlate" android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp" android:paddingBottom="5dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Route: "
+                    android:drawableLeft="@drawable/east_direction"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="48A"
+                    android:textSize="17sp"
+                    android:id="@+id/txtRoute" android:gravity="center_vertical"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:weightSum="10"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp" android:paddingBottom="5dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:drawableLeft="@drawable/timer"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 9:30 PM"
+                    android:textSize="17sp"
+                    android:autoLink="phone"
+                    android:id="@+id/txtStartTime" android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp" android:paddingBottom="5dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:drawableLeft="@drawable/ic_money_30"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" KSH 50"
+                    android:textSize="17sp"
+                    android:autoLink="phone"
+                    android:id="@+id/txtFare" android:gravity="center_vertical"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal" android:layout_gravity="right" android:gravity="right"
+            android:layout_width="match_parent" android:layout_weight="5" android:layout_height="0dp"
+            android:paddingLeft="15dp" android:paddingTop="10dp" android:paddingBottom="5dp">
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/btnBookBus"
+                android:text="Book Now" style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_gravity="right"/>
+    </LinearLayout>
+</LinearLayout>

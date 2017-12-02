@@ -19,7 +19,8 @@ public class MyApplication extends Application {
 
     public static String CLIENT_SECRET  = "7d2689ade5885f5f59caad220123097d726e9407a3b1d490381a75e5b98ccd74";
     public static String CLIENT_ID  = "f2e2ee094f51a74a7031b1e7f2558d286c647316406e251ac3cc14ad13427509";
-    public static String URL1  = "http://192.168.0.10/transcomfy/api";
+    public static String URL1  = "http://192.168.43.42/transcomfy/api";
+    public static String URL2  = "http://192.168.0.10/transcomfy/api";
     public static String URL  = "http://techmata.co.ke/transcomfy/api";
     public static String URL0  = "http://imanicabs.co.ke/taxiDispatch/api";
     //public static String API_KEY = "2222";

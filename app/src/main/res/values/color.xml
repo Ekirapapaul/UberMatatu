@@ -4,10 +4,12 @@
 
     <color name="black">#000</color>
     <color name="grey">#A0A0A0</color>
-    <color name="primaryDark">#0000ff</color>
     <color name="primaryOld">#464aff</color>
-    <color name="primary">#304ffe</color>
-    <color name="colorAccent">#304ffe</color>
+    <color name="primaryDark">#854B25</color>
+    <color name="primary">#FFF8DC</color>
+    <color name="themeTextColor">#0B1753</color>
+    <color name="colorAccent">#854B25</color>
+    <color name="colorAccent1">#304ffe</color>
     <color name="text_grey">#9e9e9e</color>
     <color name="white">#FFF</color>
     <color name="divider">#B6B6B6</color>

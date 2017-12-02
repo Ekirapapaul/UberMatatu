@@ -24,7 +24,7 @@ public class AccountActivity extends AppCompatActivity {
             intent = new Intent(AccountActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-        }else {
+        }else{
             setContentView(R.layout.activity_account);
             Button signin = (Button)findViewById(R.id.btn_sign_in);
             signin.setOnClickListener(new View.OnClickListener() {

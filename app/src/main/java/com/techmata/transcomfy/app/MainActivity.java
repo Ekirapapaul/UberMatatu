@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Setup click events on the Navigation View Items.
          */
-
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -124,12 +123,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id == R.id.action_manager) {
-            Intent intent = new Intent(MainActivity.this, ManagerActivity.class);
-            startActivity(intent);
-            return true;
-        }
-
 
         return super.onOptionsItemSelected(item);
     }

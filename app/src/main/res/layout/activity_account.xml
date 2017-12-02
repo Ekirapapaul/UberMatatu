@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/primary">
 
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:id="@+id/ivLogo"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/logo"
             android:scaleType="fitCenter"
             android:layout_above="@+id/linearLayout" android:layout_centerHorizontal="true"/>
     <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign In"
                 android:id="@+id/btn_sign_in"
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"

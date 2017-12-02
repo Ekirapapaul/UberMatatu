@@ -141,77 +141,77 @@
             android:background="@color/divider" android:layout_marginTop="10dp" android:layout_marginBottom="5dp"/>
 
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-                 android:orientation="vertical"
-                 android:id="@+id/lytVehicle"
+                  android:orientation="vertical"
+                  android:id="@+id/lytVehicle"
                   android:visibility="gone"
-                 android:background="@drawable/bg_layout" android:backgroundTint="@color/white"
-                 android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
-                 android:layout_marginRight="10dp">
-       <LinearLayout
-               android:orientation="horizontal"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="25dp"
-               android:paddingTop="10dp" android:paddingBottom="10dp">
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Vehicle: "
-                   android:drawableLeft="@drawable/taxi_30"
-                   android:drawablePadding="10dp"
-                   android:textSize="17sp"
-                   android:gravity="center_vertical"/>
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="KAY 290W"
-                   android:textSize="17sp"
-                   android:id="@+id/txtVehicle" android:gravity="center_vertical"/>
-       </LinearLayout>
-       <LinearLayout
-               android:orientation="horizontal"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="25dp"
-               android:paddingTop="10dp" android:paddingBottom="10dp">
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Driver: "
-                   android:drawableLeft="@drawable/driver_30"
-                   android:drawablePadding="10dp"
-                   android:textSize="17sp"
-                   android:gravity="center_vertical"/>
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Mark Karanja"
-                   android:textSize="17sp"
-                   android:id="@+id/txtDriver" android:gravity="center_vertical"/>
-       </LinearLayout>
-       <LinearLayout
-               android:orientation="horizontal"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:paddingLeft="25dp"
-               android:paddingTop="10dp" android:paddingBottom="10dp">
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text=" "
-                   android:drawableLeft="@drawable/phone_30"
-                   android:drawablePadding="10dp"
-                   android:textSize="17sp"
-                   android:gravity="center_vertical"/>
-           <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="0712123344"
-                   android:textSize="17sp"
-                   android:autoLink="phone"
-                   android:id="@+id/txtPhoneNo" android:gravity="center_vertical"/>
-       </LinearLayout>
-   </LinearLayout>
+                  android:background="@drawable/bg_layout" android:backgroundTint="@color/white"
+                  android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp"
+                  android:layout_marginRight="10dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle: "
+                    android:drawableLeft="@drawable/taxi_30"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KAY 290W"
+                    android:textSize="17sp"
+                    android:id="@+id/txtVehicle" android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Driver: "
+                    android:drawableLeft="@drawable/driver_30"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mark Karanja"
+                    android:textSize="17sp"
+                    android:id="@+id/txtDriver" android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingTop="10dp" android:paddingBottom="10dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:drawableLeft="@drawable/phone_30"
+                    android:drawablePadding="10dp"
+                    android:textSize="17sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0712123344"
+                    android:textSize="17sp"
+                    android:autoLink="phone"
+                    android:id="@+id/txtPhoneNo" android:gravity="center_vertical"/>
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
                   android:orientation="vertical"
                   android:id="@+id/lytTrip"

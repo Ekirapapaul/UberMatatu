@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.techmata.transcomfy.app" >
+    package="com.techmata.transcomfy.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".models.AppController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <!-- <meta-data
+        android:theme="@style/AppTheme">
+
+        <!--
+             <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
+            android:value="@integer/google_play_services_version" />
+        -->
         <meta-data
-                android:name="com.google.android.maps.API_KEY"
-                android:value="AIzaSyCkZOwxdpY-bfjtIyRunfLVUU4x-8NWhKY" />
+            android:name="com.google.android.maps.API_KEY"
+            android:value="AIzaSyCkZOwxdpY-bfjtIyRunfLVUU4x-8NWhKY" />
         <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyCkZOwxdpY-bfjtIyRunfLVUU4x-8NWhKY" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCkZOwxdpY-bfjtIyRunfLVUU4x-8NWhKY" />
+
         <activity
-            android:name="com.techmata.transcomfy.app.auth.AccountActivity"
-            android:label="@string/app_name" >
+            android:name=".ActivitySplash"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,16 +42,24 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.techmata.transcomfy.app.auth.AuthActivity"
-                android:label="@string/app_name" >
+            android:name=".auth.AccountActivity"
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="com.techmata.imani.auth.AuthActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-                android:name="com.techmata.transcomfy.app.MainActivity"
-                android:label="@string/app_name" >
+            android:name=".auth.AuthActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.techmata.imani.auth.AuthActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="com.techmata.imani.MainActivity" />
 
@@ -47,20 +67,46 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.techmata.transcomfy.app.TripActivity"
-                android:parentActivityName="com.techmata.transcomfy.app.MainActivity"
-                android:theme="@style/AppTheme.ActionBar">
+            android:name=".TripActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.techmata.transcomfy.app.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.techmata.transcomfy.app.MainActivity" />
         </activity>
         <activity
-                android:name="com.techmata.transcomfy.app.EditTripActivity"
-                android:parentActivityName="com.techmata.transcomfy.app.EditTripActivity"
-                android:theme="@style/AppTheme.ActionBar">
+            android:name=".BusesActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.techmata.transcomfy.app.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.techmata.transcomfy.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EditTripActivity"
+            android:parentActivityName=".EditTripActivity"
+            android:theme="@style/AppTheme.ActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.techmata.transcomfy.app.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ChooseRoute"
+            android:label="Choose Route">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Game"
+            android:label="Choose Route">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

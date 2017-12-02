@@ -18,7 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.android.volley.*;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
@@ -205,7 +208,6 @@ public class MainFragment extends Fragment {
                 Integer tHours = Integer.valueOf(sdf.format(tDate));
                 Log.d("myHours", String.valueOf(tHours));
 
-
                 Date cDate = Calendar.getInstance().getTime();
                 Integer cHours = Integer.valueOf(sdf.format(cDate));
                 Log.d("myHours", String.valueOf(cHours));
@@ -222,12 +224,12 @@ public class MainFragment extends Fragment {
                     snackbar.show();
                     return;
                 }
+                
                 if(locFrom == null){
                     Toast.makeText(getContext(),"Please select pick up location",Toast.LENGTH_SHORT).show();
                 }else if(locTo == null){
                     Toast.makeText(getContext(),"Please select drop off location",Toast.LENGTH_SHORT).show();
                 }else {
-
                     getDistance(locFrom,locTo);
                     barProg.setVisibility(View.VISIBLE);
                     btnRequest.setVisibility(View.GONE);
@@ -278,12 +280,12 @@ public class MainFragment extends Fragment {
         return text;
     }
 
-    private void RequestTrip(Calendar tripTime, final LatLng from, LatLng to,int distance){
+    private void requestTrip(Calendar tripTime, final LatLng from, LatLng to, int distance){
         SimpleDateFormat mydateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat mytimeFormatter = new SimpleDateFormat("HH:mm:ss");
 
         Log.i("myfrom", from.toString());
-        JSONObject jsonParam = new JSONObject();
+        final JSONObject jsonParam = new JSONObject();
 
         //TODO: decimal points?
         Integer cost  = distance/1000 * Trip.COSTPERKM;
@@ -302,16 +304,13 @@ public class MainFragment extends Fragment {
             e.printStackTrace();
         }
         Log.i("myparam",jsonParam.toString());
-        mDbHelper.saveTrip(jsonParam,1);
+
         etPick.setText("");
         locFrom = null;
         etDrop.setText("");
         locTo = null;
-        if(true){
 
-            return;
-        }
-       /* JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,
                 MyApplication.URL+"/trips/buses",
                 jsonParam,
                 new Response.Listener<JSONObject>() {
@@ -325,26 +324,36 @@ public class MainFragment extends Fragment {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                                if (response.has("id")){
+                                if (!response.has("error")){
                                     //Toast.makeText(getContext(),"Ride Requested",Toast.LENGTH_LONG).show();
                                     etPick.setText("");
                                     locFrom = null;
                                     etDrop.setText("");
                                     locTo = null;
+
                                     //save trip to db
-                                    *//*SaveTrip task = new SaveTrip();
-                                    task.execute(response);*//*
+                                    //mDbHelper.saveTrip(jsonParam,1);
+
+                                    //Toast.makeText(context,"ID "+String.valueOf(mBuses.get(getAdapterPosition()).getId()),Toast.LENGTH_SHORT ).show();
+                                    Intent intent = new Intent(getContext(), BusesActivity.class);
+                                    try {
+                                        intent.putExtra("buses_data", response.getJSONArray("buses").toString());
+                                        getContext().startActivity(intent);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
 
                                 } else {
                                     Log.i("myerr","invalid response");
-                                    String err = "Error";
-                                    if (response.has("error")){
+                                    String err = "Error getting buses";
+                                    /*if (response.has("error")){
                                         try {
                                             err = response.getString("error");
                                         } catch (JSONException e) {
                                             e.printStackTrace();
                                         }
-                                    }
+                                    }*/
                                 }
                         }else{
                             Toast.makeText(getContext(),"Error, please try again.",Toast.LENGTH_LONG).show();
@@ -357,31 +366,38 @@ public class MainFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("myerr",error.toString());
+
+                Intent intent = new Intent(getContext(), BusesActivity.class);
+                String buses_res = "\t \t{\"buses\":[{\"id\":2,\"plate\":\"KAZ 123Y\",\"capacity\":60,\"sacco_id\":0,\"route_id\":1,\"route_name\":\"Kikuyu 105\",\"stage_from\":4,\"stage_to\":5,\"description\":\"\"},{\"id\":4,\"plate\":\"KBY 534T\",\"capacity\":30,\"sacco_id\":0,\"route_id\":1,\"route_name\":\"Kikuyu 105\",\"stage_from\":4,\"stage_to\":5,\"description\":\"\"}]}";
+                intent.putExtra("buses_data", buses_res);
+                getContext().startActivity(intent);
+
                 try {
                     String response = new String(error.networkResponse.data,"UTF-8");
                     Log.i("myerrRes",response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getContext(),"Error",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"Error",Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
                 barProg.setVisibility(View.GONE);
                 btnRequest.setVisibility(View.VISIBLE);
             }
         }){
+
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("Content-Type", "application/json");
                 params.put("Accept", "application/json");
-                params.put("Authorisation","Bearer "+PreferenceHelper.getAccessToken(getContext()));
+                params.put("Authorisation","Bearer " + PreferenceHelper.getAccessToken(getContext()));
                 Log.i("myHeaders", params.toString());
                 return params;
             }
         };
         MyApplication myApp = new MyApplication(getContext());
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy());
-        MyApplication.getInstance().addToRequestQueue(jsonRequest);*/
+        MyApplication.getInstance().addToRequestQueue(jsonRequest);
     }
 
     public int getDistance(LatLng origin,LatLng destination){
@@ -404,7 +420,7 @@ public class MainFragment extends Fragment {
                                         .getJSONObject(0).getJSONObject("distance").getInt("value");
                                 //requestTrip
                                 //projectID = projects.get(spProjects.getSelectedItem());
-                                RequestTrip(tripTime,locFrom,locTo,d);
+                                requestTrip(tripTime,locFrom,locTo,d);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

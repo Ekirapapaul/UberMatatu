@@ -315,9 +315,9 @@ public class TransDbHelper extends SQLiteOpenHelper {
             //valuesAdd(TransContract.Trips.COLUMN_NAME_START_TIME, trip, "start_time", 1);
            // valuesAdd(TransContract.Trips.COLUMN_NAME_START_MILEAGE, trip, "start_mileage", 1);
             //valuesAdd(TransContract.Trips.COLUMN_NAME_STOP_MILEAGE, trip, "end_mileage", 1);
-           // valuesAdd(Trips.COLUMN_NAME_START_NAME, trip, "start_location", 1);
+           valuesAdd(Trips.COLUMN_NAME_START_NAME, trip, "start_location", 1);
             //valuesAdd(TransContract.Trips.COLUMN_NAME_STOP_TIME, trip, "stop_time", 1);
-           // valuesAdd(Trips.COLUMN_NAME_END_NAME, trip, "end_location", 1);
+           valuesAdd(Trips.COLUMN_NAME_END_NAME, trip, "end_location", 1);
            // valuesAdd(TransContract.Trips.COLUMN_NAME_GROUP, trip, "group", 3);
 
             mDB.insert(

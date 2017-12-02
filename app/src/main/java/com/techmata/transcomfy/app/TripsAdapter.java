@@ -79,7 +79,7 @@ public class TripsAdapter extends RecyclerView.Adapter<TripsAdapter.ViewHolderTr
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(context,"ID "+String.valueOf(mTrips.get(getAdapterPosition()).getId()),Toast.LENGTH_SHORT ).show();
+                    //Toast.makeText(context,"ID "+String.valueOf(mBuses.get(getAdapterPosition()).getId()),Toast.LENGTH_SHORT ).show();
                     Intent intent = new Intent(context, TripActivity.class);
                     intent.putExtra("tripID", mTrips.get(getAdapterPosition()).getId());
                     context.startActivity(intent);
