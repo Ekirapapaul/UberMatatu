@@ -11,6 +11,7 @@ import android.view.*;
 import android.widget.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.techmata.transcomfy.app.ChooseRoute;
 import com.techmata.transcomfy.app.MainActivity;
 import com.techmata.transcomfy.app.R;
 import com.techmata.transcomfy.app.database.TransDbHelper;
@@ -140,7 +141,7 @@ public class SignInFragment extends Fragment {
                                     //JSONObject data = response.getJSONObject("data");
                                     PreferenceHelper.setAccessToken(response.getString("access_token"), getActivity());
 
-                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                    Intent intent = new Intent(getContext(), ChooseRoute.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     ((Activity) getActivity()).finish();
                                     getContext().startActivity(intent);

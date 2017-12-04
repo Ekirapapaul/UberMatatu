@@ -1,8 +1,6 @@
 package com.techmata.transcomfy.app;
 
-/**
- * Created by stephineosoro on 05/07/2017.
- */
+
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

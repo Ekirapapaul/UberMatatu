@@ -54,10 +54,10 @@
                 android:focusable="false"
                 android:id="@+id/etTime" android:layout_gravity="center_horizontal"/>
 
-        <TextView
-                android:text="Pick Up Location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <!--<TextView-->
+                <!--android:text="Pick Up Location"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"/>-->
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

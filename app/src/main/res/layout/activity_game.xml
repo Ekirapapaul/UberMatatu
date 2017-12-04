@@ -12,6 +12,16 @@
         android:text="Click on the markers to get more information"
         android:textSize="18dp"
         android:id="@+id/description"/>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false" android:id="@+id/scrollView"/>
+
+    <LinearLayout
+        android:id="@+id/loginLyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
     <org.osmdroid.views.MapView
         android:id="@+id/mapview"
@@ -30,10 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Are these stops correct?"
+            android:visibility="invisible"
+            android:text="Estimate Arrival Time - 18 minutes"
             android:textSize="18dp"
             android:id="@+id/question"/>
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -41,7 +52,7 @@
             android:text="(Click on the markers to get more information)"
             android:textSize="18dp"
             android:textColor="@color/colorAccent"
-            android:id="@+id/description"/>
+            android:id="@+id/description"/>-->
 
         <android.support.v7.widget.AppCompatButton
         android:background="@color/primary"
@@ -49,8 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/yes"
-            android:text="Yes" />
-        <android.support.v7.widget.AppCompatButton
+            android:text="Get Bus information" />
+       <!-- <android.support.v7.widget.AppCompatButton
             android:background="@color/primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/skip"
-            android:text="Skip" />
+            android:text="Skip" />-->
 
     </LinearLayout>
 

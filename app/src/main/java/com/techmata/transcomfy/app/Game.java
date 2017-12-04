@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -32,10 +33,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.api.IMapController;
+import org.osmdroid.events.MapEventsReceiver;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.MapEventsOverlay;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.Polyline;
@@ -47,7 +50,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback,MapEventsReceiver {
 
     public static final GeoPoint NAIROBI = new GeoPoint(-1.279783, 36.822023);
     private MapView mapView;
@@ -57,6 +60,11 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
     final int REQUEST_READ_PHONE_STATE = 2;
     ArrayList<Marker> arrayList = new ArrayList<>();
     Boolean edit = false;
+    private static Location user_location = new Location("");
+    private static Location bus_stop = new Location("");
+
+
+    private ArrayList<Location> locations = new ArrayList<Location>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +72,15 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
         setContentView(R.layout.activity_game_appbar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        MapEventsOverlay mapEventsOverlay = new MapEventsOverlay(this, this);
+// settin the map and its attributes
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setClickable(true);
         mapView.setBuiltInZoomControls(true);
         mapView.setMultiTouchControls(true);
         mapView.setUseDataConnection(true);
-//        mapView.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
+        //using offline maps
+//      mapView.setTileSource(TileSourceFactory.PUBLIC_TRANSPORT);
         mapView.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
       /*  MapController mapController = (MapController) mapView.getController();
         mapController.setZoom(17);
@@ -79,6 +88,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
         IMapController mapViewController = mapView.getController();
         mapViewController.setZoom(17);
         mapViewController.setCenter(NAIROBI);
+        //set route nums
 
         route1 = getIntent().getStringExtra("route");
         route2 = getIntent().getStringExtra("route");
@@ -116,11 +126,13 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
 //        getStops("638");
 
 //        DetermineGroup("111", "12D", "120");
+
+        //determining the group on which the route is
         DetermineGroup(getIntent().getStringExtra("route"), getIntent().getStringExtra("route"), getIntent().getStringExtra("route"));
 
 //        getData("70400011111");
 
-
+/*
         Button button = (Button) findViewById(R.id.yes);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,9 +178,9 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                         edit = true;
                         MyShortcuts.showToast("Please long press and drag the markers to the correct bus stops and click yes", getBaseContext());
 //                       TODO Uncomment below for previous setting
-                       /* postdata("no", nGroup, MyShortcuts.getImei(getBaseContext()), Utils.getIPAddress(false));
+                       *//* postdata("no", nGroup, MyShortcuts.getImei(getBaseContext()), Utils.getIPAddress(false));
 
-                        restartRound();*/
+                        restartRound();*//*
 
 
                     }
@@ -196,9 +208,11 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
 
                 }
             }
-        });
+        });*/
+        mapView.getOverlays().add(0, mapEventsOverlay);
     }
 
+//draw the route function using geopoints
     private void getData(String id, final String numGroup) {
         String tag_string_req = "req_login";
         StringRequest strReq = new StringRequest(Request.Method.GET,
@@ -213,7 +227,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                     JSONArray jsonArray = jsonObject.getJSONArray("routes");
                     Log.e("json Array", jsonArray.toString());
                     Polyline line = new Polyline(getBaseContext());
-                    line.setTitle("Ma3tycoon, Nairobi");
+                    line.setTitle("Transcomfy, Nairobi");
                     line.setSubDescription(Polyline.class.getCanonicalName());
                     line.setWidth(17f);
                     line.setColor(Color.parseColor("#00BD9E"));
@@ -227,6 +241,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
 
                     }
 
+                    mapView.getOverlayManager().add(line);
                     line.setPoints(pts);
                     line.setGeodesic(true);
                     line.setInfoWindow(new BasicInfoWindow(R.layout.bonuspack_bubble, mapView));
@@ -239,7 +254,6 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                             return false;
                         }
                     });
-                    mapView.getOverlayManager().add(line);
                     getStops(numGroup);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -311,6 +325,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                     Random rand = new Random();
                     int rand1 = rand.nextInt(jsonArray.length() - 1) + 1;
                     Log.e("n", rand1 + "");
+                    //zoom in to the required poit of interest
                     String center_lon = jsonArray.getJSONObject(rand1).getString("center_lon");
                     String center_lat = jsonArray.getJSONObject(rand1).getString("center_lat");
                     String numGroup = jsonArray.getJSONObject(rand1).getString("groups");
@@ -318,11 +333,11 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                     nGroup = numGroup;
 
                     IMapController mapViewController = mapView.getController();
-                    GeoPoint NAIROBI = new GeoPoint(Float.parseFloat(center_lat), Float.parseFloat(center_lon));
+                    GeoPoint BusRoute = new GeoPoint(Float.parseFloat(center_lat), Float.parseFloat(center_lon));
 //                  TODO Getting Route
 
                     mapViewController.setZoom(16);
-                    mapViewController.setCenter(NAIROBI);
+                    mapViewController.setCenter(BusRoute);
 
                     getData(route, numGroup);
 //                    getStops(numGroup);
@@ -394,10 +409,22 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                         textView.setText(question);
                     }
 
+//                    ArrayList<Location> locations = new ArrayList<Location>();
+                    Location location_2 = new Location("");
+
+
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         float stop_lon = Float.parseFloat(jsonObject1.getString("stop_lon"));
                         float stop_lat = Float.parseFloat(jsonObject1.getString("stop_lat"));
+
+                        Location location = new Location("");
+                        location.setLatitude(stop_lat);
+                        location.setLongitude(stop_lon);
+                        location_2.setLatitude(stop_lat);
+                        location_2.setLongitude(stop_lon);
+                        locations.add(location);
+
                         String label = jsonObject1.getString("stop_name") + " " + jsonObject1.getString("route_short_name") + " : " + jsonObject1.getString("route_desc");
                         String stop_name = jsonObject1.getString("stop_name");
 
@@ -470,7 +497,9 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
 
 
                         arrayList.add(marker);
-                        mapView.getOverlays().add(marker);
+
+// TODO Removing the bus stops marker in the below stop
+//                        mapView.getOverlays().add(marker);
 
                         // Add the init objects to the ArrayList overlayItemArray
 
@@ -478,6 +507,8 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
                                 new GeoPoint(-1.36294, 36.65618)));*/
 
                     }
+
+//                    getClosest(locations,user_location);
                     Log.e("total", jsonArray.length() + " ");
 
                     // Add the Array to the IconOverlay
@@ -750,5 +781,102 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
 
     }
 
+    private Location getClosest(ArrayList<Location> locations,Location location_){
+//        , Location closestLocation
+//        Location closestLocation = ;
+        int smallestDistance = -1;
+        double startLong=location_.getLatitude();
+        Location closestLocation=null;
+        MyShortcuts.showToast("length of location "+ locations.size(),getBaseContext());
+        Log.e("inside", "getClosest");
 
+        Log.e("inside", "length of location "+ locations.size());
+
+        for(Location location :  locations){
+
+
+            int distance = (int) location_.distanceTo(location);
+           /* int distance = Location.distanceBetween(Double.parseDouble(closestLocation.getLatitude()+""),
+                    closestLocation.getLongitude(),
+                    location.getLatitude(),
+                    location.getLongitude());*/
+            if(smallestDistance == -1 || distance < smallestDistance){
+                closestLocation = location;
+                smallestDistance = distance;
+            }
+        }
+        MyShortcuts.showToast("smallest distance "+smallestDistance,getBaseContext());
+
+        bus_stop=closestLocation;
+        return closestLocation;
+    }
+
+
+    @Override
+    public boolean singleTapConfirmedHelper(GeoPoint geoPoint) {
+
+
+        if (MyShortcuts.hasInternetConnected(getBaseContext())) {
+            user_location.setLongitude(geoPoint.getLongitude());
+            user_location.setLatitude(geoPoint.getLatitude());
+
+            MyShortcuts.showToast("Inside single Tap", getBaseContext());
+//        Log.e("inside", "tapped");
+//TODO check for internet before proceeding
+            Location closest = getClosest(locations, user_location);
+            Marker marker = new Marker(mapView);//you can also pass "this" as argument I believe
+            marker.setPosition(geoPoint);
+
+
+            Marker marker2 = new Marker(mapView);//you can also pass "this" as argument I believe
+            marker2.setPosition(new GeoPoint(closest.getLatitude(), closest.getLongitude()));
+            Log.e("geopoint", closest.getLatitude() + " ," + closest.getLongitude());
+
+            TextView tx = (TextView)findViewById(R.id.question);
+            tx.setVisibility(View.INVISIBLE);
+            MyShortcuts.showToast(closest.getLatitude() + " , nearest bus stop" + closest.getLongitude(), getBaseContext());
+            mapView.getOverlays().add(marker);
+            mapView.getOverlays().add(marker2);
+        }
+        else{
+            MyShortcuts.showToast("No internet connection!",getBaseContext());
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean longPressHelper(GeoPoint geoPoint) {
+
+        Log.e("LongPress", "Inside");
+        return true;
+    }
+
+
+    private void getClosestBus(){
+        /*Location location = new Location();
+        location.setLatitude(latitude);
+        location.setLongitude(longitude);
+
+        Location locationFromDB = new Location();
+        locationFromDB.setLatitude(latitudeFromDB);
+        locationFromDB.setLongitude(longitudeFromDB);*/
+
+
+
+
+        for(Location location :  locations){
+
+
+            int distance = (int) bus_stop.distanceTo(location);
+           /* int distance = Location.distanceBetween(Double.parseDouble(closestLocation.getLatitude()+""),
+                    closestLocation.getLongitude(),
+                    location.getLatitude(),
+                    location.getLongitude());*/
+            /*if(smallestDistance == -1 || distance < smallestDistance){
+                closestLocation = location;
+                smallestDistance = distance;
+            }*/
+        }
+    }
 }
