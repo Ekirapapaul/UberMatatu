@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
                 FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 
+                if (menuItem.getItemId() == R.id.nav_choose_route) {
+                    fragmentTransaction.replace(R.id.containerView,new ChooseRouteFragment()).commit();
+                    toolbar.setTitle(getString(R.string.choose_route));
+                }
                 if (menuItem.getItemId() == R.id.nav_item_request) {
                     fragmentTransaction.replace(R.id.containerView,new MainFragment()).commit();
                     toolbar.setTitle(getString(R.string.title_section1));
