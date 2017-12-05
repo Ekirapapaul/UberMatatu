@@ -63,7 +63,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
     private static Location user_location = new Location("");
     private static Location bus_stop = new Location("");
 
-
+TextView tvLocation,tvDistance,tvNearest;
     private ArrayList<Location> locations = new ArrayList<Location>();
 
     @Override
@@ -74,6 +74,11 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
         setSupportActionBar(toolbar);
         MapEventsOverlay mapEventsOverlay = new MapEventsOverlay(this, this);
 // settin the map and its attributes
+        tvLocation=(TextView) findViewById(R.id.locationLength);
+        tvDistance=(TextView) findViewById(R.id.smallestDistance);
+        tvNearest=(TextView) findViewById(R.id.nearest);
+
+
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.setClickable(true);
         mapView.setBuiltInZoomControls(true);
@@ -789,6 +794,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
         Location closestLocation=null;
         MyShortcuts.showToast("length of location "+ locations.size(),getBaseContext());
         Log.e("inside", "getClosest");
+       tvLocation.setText(String.valueOf(locations.size()));
 
         Log.e("inside", "length of location "+ locations.size());
 
@@ -806,7 +812,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
             }
         }
         MyShortcuts.showToast("smallest distance "+smallestDistance,getBaseContext());
-
+tvDistance.setText(String.valueOf(smallestDistance));
         bus_stop=closestLocation;
         return closestLocation;
     }
@@ -835,6 +841,7 @@ public class Game extends MyBaseActivity implements ActivityCompat.OnRequestPerm
             TextView tx = (TextView)findViewById(R.id.question);
             tx.setVisibility(View.INVISIBLE);
             MyShortcuts.showToast(closest.getLatitude() + " , nearest bus stop" + closest.getLongitude(), getBaseContext());
+            tvNearest.setText(String.valueOf(closest.getLongitude()));
             mapView.getOverlays().add(marker);
             mapView.getOverlays().add(marker2);
         }
