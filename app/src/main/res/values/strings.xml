@@ -17,6 +17,7 @@
     <string name="error_empty_fields">Please fill this field</string>
     <string name="error_pass_no_match">Passwords do not match</string>
     <string name="title_activity_choose_route">Sign in</string>
+    <string name="choose_route">Choose Route</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
