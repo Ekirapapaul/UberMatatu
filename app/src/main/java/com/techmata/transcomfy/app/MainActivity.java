@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
          */
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView, new MainFragment(),"FRAG_MAIN").commit();
-        toolbar.setTitle(getString(R.string.title_section1));
+        mFragmentTransaction.replace(R.id.containerView, new ChooseRouteFragment(),"FRAG_MAIN").commit();
+        toolbar.setTitle(getString(R.string.choose_route));
 
         /**
          * Setup click events on the Navigation View Items.
@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
                 FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 
+                if (menuItem.getItemId() == R.id.nav_choose_route) {
+                    fragmentTransaction.replace(R.id.containerView,new ChooseRouteFragment()).commit();
+                    toolbar.setTitle(getString(R.string.choose_route));
+                }
                 if (menuItem.getItemId() == R.id.nav_item_request) {
                     fragmentTransaction.replace(R.id.containerView,new MainFragment()).commit();
                     toolbar.setTitle(getString(R.string.title_section1));

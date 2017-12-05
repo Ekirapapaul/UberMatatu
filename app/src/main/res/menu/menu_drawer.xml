@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <item android:title="@string/choose_route"
+    android:icon="@drawable/home"
+    android:id="@+id/nav_choose_route"/>
 
     <item android:title="Request Ride"
           android:id="@+id/nav_item_request"
