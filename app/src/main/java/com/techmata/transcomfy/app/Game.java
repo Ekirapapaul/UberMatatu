@@ -794,7 +794,7 @@ TextView tvLocation,tvDistance,tvNearest;
         Location closestLocation=null;
         MyShortcuts.showToast("length of location "+ locations.size(),getBaseContext());
         Log.e("inside", "getClosest");
-       tvLocation.setText(String.valueOf(locations.size()));
+        tvLocation.setText("Lenth of location : " + String.valueOf(locations.size()));
 
         Log.e("inside", "length of location "+ locations.size());
 
@@ -812,7 +812,7 @@ TextView tvLocation,tvDistance,tvNearest;
             }
         }
         MyShortcuts.showToast("smallest distance "+smallestDistance,getBaseContext());
-tvDistance.setText(String.valueOf(smallestDistance));
+        tvDistance.setText("Shortest Distance : " + String.valueOf(smallestDistance));
         bus_stop=closestLocation;
         return closestLocation;
     }
@@ -841,7 +841,7 @@ tvDistance.setText(String.valueOf(smallestDistance));
             TextView tx = (TextView)findViewById(R.id.question);
             tx.setVisibility(View.INVISIBLE);
             MyShortcuts.showToast(closest.getLatitude() + " , nearest bus stop" + closest.getLongitude(), getBaseContext());
-            tvNearest.setText(String.valueOf(closest.getLongitude()));
+            tvNearest.setText("Nearest bus stop : " + String.valueOf(closest.getLongitude()));
             mapView.getOverlays().add(marker);
             mapView.getOverlays().add(marker2);
         }
