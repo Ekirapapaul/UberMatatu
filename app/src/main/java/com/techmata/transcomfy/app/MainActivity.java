@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
          */
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView, new MainFragment(),"FRAG_MAIN").commit();
+        mFragmentTransaction.replace(R.id.containerView, new ChooseRouteFragment(),"FRAG_MAIN").commit();
         toolbar.setTitle(getString(R.string.title_section1));
 
         /**
