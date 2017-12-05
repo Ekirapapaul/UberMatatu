@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView, new ChooseRouteFragment(),"FRAG_MAIN").commit();
-        toolbar.setTitle(getString(R.string.title_section1));
+        toolbar.setTitle(getString(R.string.choose_route));
 
         /**
          * Setup click events on the Navigation View Items.
